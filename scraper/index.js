@@ -339,7 +339,8 @@ async function scrapeCareers() {
         title: item.title,
         location: locationFromTitle(item.title),
         workmode: scraperConfig.defaultWorkmode,
-        expirationdate: item.expirationdate,
+        // Alro's listing shows the POSTING date, not a deadline: never use it as expirationdate.
+        expirationdate: undefined,
         source: CAREERS_SOURCE
       });
     });
