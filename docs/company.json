@@ -1,0 +1,11 @@
+{
+  "id": "1515374",
+  "company": "ALRO SA",
+  "brand": "Alro",
+  "status": "activ",
+  "location": ["Slatina"],
+  "website": ["https://www.alro.ro"],
+  "career": ["https://www.alro.ro/cariere/oportunitati-de-angajare"],
+  "scraperFile": "https://github.com/peviitor-scrapers/alro-nodejs-scraper/actions/workflows/scrape.yml",
+  "ownJobUrlPrefix": "https://www.alro.ro/cariere/detalii-job/"
+}

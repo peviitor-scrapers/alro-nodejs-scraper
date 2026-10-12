@@ -1,0 +1,20 @@
+{
+  "userAgent": "job_seeker_ro_spider",
+  "requestTimeoutMs": 10000,
+  "pageDelayMs": 1000,
+  "staleJobDeletion": false,
+  "manageCompany": true,
+  "defaultLocation": ["Slatina"],
+  "defaultWorkmode": "on-site",
+  "ownJobUrlPrefix": "https://www.alro.ro/cariere/detalii-job/",
+  "sources": {
+    "sitemap": "",
+    "listing": "https://www.alro.ro/cariere/oportunitati-de-angajare",
+    "jobArchive": "https://www.alro.ro/cariere/detalii-job/"
+  },
+  "selectors": {
+    "jobArticle": [".accordion-item", "[class*='job']", ".vacancy, .position, .listing-item"],
+    "jobTitle": [".name", "h1, h2, h3, h4", "[itemprop='title'], [aria-label]", "a"],
+    "jobMeta": [".date", "p, .meta, [class*='deadline']"]
+  }
+}
