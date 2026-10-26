@@ -10,11 +10,11 @@
 | Location | JUD. OLT, MUN. SLATINA, STR. PITESTI, NR.116 |
 | Website | [https://www.alro.ro](https://www.alro.ro) |
 | Careers | [https://www.alro.ro/cariere/oportunitati-de-angajare](https://www.alro.ro/cariere/oportunitati-de-angajare) |
-| Last Scraped | 2026-10-25 |
+| Last Scraped | 2026-10-26 |
 
 ## Current Job Listings (18)
 
-_Generated: 2026-10-25T10:45:25.487Z_
+_Generated: 2026-10-26T12:17:13.068Z_
 
 ### INGINER AUTOMATIST
 
