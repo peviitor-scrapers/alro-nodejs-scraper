@@ -273,12 +273,23 @@ async function scrapeCareers() {
   const sitemapEntries = await fetchSitemapJobUrls();
   await sleep(PAGE_DELAY);
 
+  // The site sometimes answers a runner with a page that has no job list (bot filter /
+  // error page, HTTP 200). Retry a couple of times and log what came back, so an
+  // intermittent empty response is not mistaken for "no jobs" and trips the canary.
   let listingItems = [];
-  try {
-    listingItems = parseListing(await fetchListing());
-    console.log(`  Listing: ${listingItems.length} open positions`);
-  } catch (err) {
-    console.log(`  Listing error: ${err.message}`);
+  for (let attempt = 1; attempt <= 3 && listingItems.length === 0; attempt++) {
+    try {
+      const html = await fetchListing();
+      listingItems = parseListing(html);
+      console.log(`  Listing: ${listingItems.length} open positions`);
+      if (listingItems.length === 0) {
+        const title = (html.match(/<title[^>]*>([^<]*)/i) || [])[1] || "";
+        console.log(`  Listing attempt ${attempt}/3 empty (${html.length} bytes, title: "${title.trim().slice(0, 80)}")`);
+      }
+    } catch (err) {
+      console.log(`  Listing error (attempt ${attempt}/3): ${err.message}`);
+    }
+    if (listingItems.length === 0 && attempt < 3) await sleep(attempt * 5000);
   }
 
   if (listingItems.length > 0) {
